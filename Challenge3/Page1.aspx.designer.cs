@@ -10,7 +10,7 @@
 namespace Challenge3 {
     
     
-    public partial class Default {
+    public partial class Page1 {
         
         /// <summary>
         /// form1 control.

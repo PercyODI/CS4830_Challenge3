@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Challenge3
 {
-    public partial class Default : Page
+    public partial class Page1 : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

@@ -12,7 +12,12 @@ namespace Challenge3
         {
             var settings = new FriendlyUrlSettings();
             settings.AutoRedirectMode = RedirectMode.Off;
+            // FriendlyUrls has been disabled to allow POST data
             //routes.EnableFriendlyUrls(settings);
+
+            // Set Page1 to be a default route
+            routes.MapPageRoute("", "Default", "~/Page1.aspx");
+            routes.MapPageRoute("", "", "~/Page1.aspx");
         }
     }
 }
