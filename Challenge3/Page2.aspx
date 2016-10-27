@@ -11,7 +11,8 @@
     <div>
         <asp:HiddenField runat="server" Value="" ID="CityHF"></asp:HiddenField>
         <asp:HiddenField runat="server" Value="" ID="StateHF"/>
-        <asp:Button runat="server" ID="pageThreeButton" Text="To Page 3" OnClick="pageThreeButton_OnClick"/>
+        <asp:HiddenField runat="server" Value="Page2" ID="PageNum"/>
+        <asp:Button runat="server" ID="pageThreeButton" Text="To Page 3"/>
     </div>
     </form>
 </body>

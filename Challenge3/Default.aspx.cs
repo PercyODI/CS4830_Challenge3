@@ -13,11 +13,5 @@ namespace Challenge3
         {
             
         }
-
-        protected void submitButton_OnClick(object sender, EventArgs e)
-        {
-            Session["PageNum"] = 2;
-            Response.Redirect("~/Page2.aspx");
-        }
     }
 }

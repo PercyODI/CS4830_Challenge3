@@ -11,24 +11,25 @@ namespace Challenge3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["PageNum"] == null || !((int)Session["PageNum"]).Equals(3))
+            try
+            {
+                FirstNameTD.InnerText = Request.QueryString["FirstName"];
+                LastNameTD.InnerText = Request.QueryString["LastName"];
+
+                HiddenField cityTextBox = (HiddenField)PreviousPage.FindControl("CityHF");
+                CityTD.InnerText = Request.Form.Get("CityHF");
+
+                HiddenField stateTextBox = (HiddenField)PreviousPage.FindControl("StateHF");
+                StateTD.InnerText = Request.Form.Get("StateHF");
+
+                AgeTD.InnerText = Request.Cookies.Get("Age").Value;
+
+                PhoneTD.InnerText = (string)Session["Phone"];
+            }
+            catch (Exception)
             {
                 Response.Redirect("~/");
             }
-            FirstNameTD.InnerText = Request.QueryString["FirstName"];
-            LastNameTD.InnerText = Request.QueryString["LastName"];
-
-            HiddenField cityTextBox = (HiddenField) PreviousPage.FindControl("CityHF");
-            CityTD.InnerText = cityTextBox.Value;
-
-            HiddenField stateTextBox = (HiddenField) PreviousPage.FindControl("StateHF");
-            StateTD.InnerText = stateTextBox.Value;
-
-            AgeTD.InnerText = Request.Cookies.Get("Age").Value;
-
-            PhoneTD.InnerText = (string) Session["Phone"];
-
-            Session.Remove("PageNum");
         }
     }
 }

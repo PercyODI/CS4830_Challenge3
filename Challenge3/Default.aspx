@@ -33,7 +33,8 @@
                 <asp:Label runat="server" Text="Phone"></asp:Label>
                 <asp:TextBox runat="server" Text="" TextMode="Phone" ID="Phone"></asp:TextBox>
             </p>
-            <p><asp:Button runat="server" ID="submitButton" Text="Go to Page 2!" OnClick="submitButton_OnClick"/></p>
+            <p><asp:HiddenField runat="server" ID="PageNum" Value="Page1"/></p>
+            <p><asp:Button runat="server" ID="submitButton" Text="Go to Page 2!" PostBackUrl="~/Page2.aspx"/></p>
         </div>
     </form>
 </body>
