@@ -10,11 +10,14 @@ namespace Challenge3
 {
     public partial class Page2 : System.Web.UI.Page
     {
+        private string _redirectUrl = "~/";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
             if (Session["PageNum"] == null || !((int)Session["PageNum"]).Equals(2))
             {
-                Response.Redirect("~/");
+                Response.Redirect("~/", );
             }
             if (!IsPostBack)
             {
@@ -35,7 +38,7 @@ namespace Challenge3
 
                 Session["Phone"] = phoneTextBox.Text;
 
-                pageThreeButton.PostBackUrl = "~/Page3.aspx?FirstName=" + firstNameTextBox.Text + "&LastName=" +
+                _redirectUrl = "~/Page3.aspx?FirstName=" + firstNameTextBox.Text + "&LastName=" +
                                               lastNameTextBox.Text;
             }
         }
@@ -44,6 +47,7 @@ namespace Challenge3
         protected void pageThreeButton_OnClick(object sender, EventArgs e)
         {
             Session["PageNum"] = 3;
+            Response.Redirect(_redirectUrl);
         }
     }
 }
