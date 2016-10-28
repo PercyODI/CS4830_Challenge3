@@ -11,7 +11,8 @@ namespace Challenge3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Add("PageNum", "Page1");
+            // Set the session to say that the user is coming from Page1
+            Session["PageNum"] = "Page1";
         }
     }
 }

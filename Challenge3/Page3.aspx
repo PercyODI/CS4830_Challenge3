@@ -11,7 +11,7 @@
 
     <div>
         <div class="container">
-            <div class="row">
+            <div class="row col-sm-8 col-sm-offset-2">
                 <table class="table table-bordered">
                     <tr>
                         <td>First Name</td>

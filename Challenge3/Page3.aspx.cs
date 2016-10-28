@@ -11,31 +11,50 @@ namespace Challenge3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Try to retrieve these values. If any value throws an exception
-            // (such as null pointer), redirect to the main form page
-            try
+            // Check that the user came from Page2
+            if (Session["PageNum"] != null && Session["PageNum"].Equals("Page2"))
             {
-                // Set the inner text of the table cells for First Name and
-                // Last Name to the values given in the query string
-                FirstNameTD.InnerText = Request.QueryString["FirstName"];
-                LastNameTD.InnerText = Request.QueryString["LastName"];
-                
-                // Set the inner text of the table cells for City and
-                // State to the values from the Page2 form as POST data
-                CityTD.InnerText = Request.Form.Get("CityHF");
-                StateTD.InnerText = Request.Form.Get("StateHF");
+                // Try to retrieve these values. If any value throws an exception
+                // (such as null pointer), redirect to the main form page
+                try
+                {
+                    // Set the inner text of the table cells for First Name and
+                    // Last Name to the values given in the query string
+                    FirstNameTD.InnerText = Request.QueryString["FirstName"];
+                    LastNameTD.InnerText = Request.QueryString["LastName"];
 
-                // Set the inner text of the table cell for Age to the
-                // value set as a cookie in Page2
-                AgeTD.InnerText = Request.Cookies.Get("Age").Value;
+                    // Set the inner text of the table cells for City and
+                    // State to the values from the Page2 form as POST data
+                    CityTD.InnerText = Request.Form.Get("CityHF");
+                    StateTD.InnerText = Request.Form.Get("StateHF");
 
-                // Set the inner text of the table cell for Phone to the
-                // value set in the session variable in Page2
-                PhoneTD.InnerText = (string)Session["Phone"];
+                    // Set the inner text of the table cell for Age to the
+                    // value set as a cookie in Page2
+                    AgeTD.InnerText = Request.Cookies.Get("Age").Value;
+                    // Clean up the users cookies
+                    Response.Cookies.Remove("Age");
+
+                    // Set the inner text of the table cell for Phone to the
+                    // value set in the session variable in Page2
+                    PhoneTD.InnerText = (string) Session["Phone"];
+                    // Clean up the session memory
+                    Session.Remove("Phone");
+
+                    // Remove the PageNum session variable to say that the 
+                    // task has been completed
+                    Session.Remove("PageNum");
+                }
+                catch (Exception)
+                {
+                    // Remove the PageNum session variable so the user has
+                    // to reenter data
+                    Session.Remove("PageNum");
+                    // Redirect to the default page if data is missing
+                    Response.Redirect("~/");
+                }
             }
-            catch (Exception)
+            else
             {
-                // Redirect to the default page if data is missing
                 Response.Redirect("~/");
             }
         }
